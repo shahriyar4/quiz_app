@@ -11,7 +11,7 @@ class DataBaseHelper {
 
     if (await databaseExists(databasePath)) {
 
-      print("Veri tabanı zaten var.Kopyalamaya gerek yok");
+      print("database already exists");
     } else {
 
       ByteData data = await rootBundle.load("database/$databaseName");
@@ -20,7 +20,7 @@ class DataBaseHelper {
           data.buffer.asUint8List(data.offsetInBytes, data.lengthInBytes);
 
       await File(databasePath).writeAsBytes(bytes, flush: true);
-      print("Veri tabanı kopyalandı");
+      print("Database is copied");
     }
 
     return openDatabase(databasePath);
